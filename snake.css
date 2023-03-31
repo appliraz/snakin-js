@@ -1,0 +1,152 @@
+
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("fonts/PressStart2P-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
+body{
+    /*
+    background-color: rgb(134, 190, 134);*/
+    background-color: rgb(31, 100, 32, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: auto;
+    top: auto;
+    margin-top: 100px;
+    
+}
+
+#upperbox{
+    width: 600px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50px;
+}
+
+#title{
+    color: rgba(255, 255, 255, 0.877);
+    flex-grow: 1;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-size: 38px;
+}
+
+#select-player-title, #select-difficulty-title {
+    font-size: 28px;
+}
+
+#score {
+    color: white;
+    font-size: 32px;
+    font-family: Arial;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+#canvas{
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+
+#menu {
+    visibility: visible;
+    /*window */
+    width: 720px;
+    /*style */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 42px;
+    background-color:  rgba(38, 92, 29, 0.85);
+    /*display */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    /*position */
+    position: absolute;
+    top: 110px;
+    z-index: 999;
+    
+}
+
+#menu_content {
+    max-width: 680px;
+    height: 620px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    margin-left: 20px;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+li{
+    display: inline;
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 20px;
+    max-width: 220px;
+}
+
+.player-img{
+    opacity: 85%;
+}
+
+#start-btn, #restart-btn{
+    width: 200px;
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 22px;
+    color: #1d380c;
+    align-self: center;
+    box-shadow: "2px 2px grey";
+    background-color: white;
+    padding: 10px;
+}
+
+#start-btn:hover, #restart-btn:hover{
+    color: #6acd2c;
+    cursor: pointer;
+}
+
+#welcome-msg{
+    display:block;
+}
+
+#player-selection{
+    display: flex;
+    text-align: center;
+    justify-items: center;
+    flex-direction: row;
+}
+
+#game-over {
+    visibility: hidden;
+    width: 720px;
+    margin: 50px;
+    /*style */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 42px;
+    background-color:  rgba(24, 58, 18, 0.85);
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#game-over-content{
+    margin-top: 20px;
+}

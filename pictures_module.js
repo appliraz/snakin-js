@@ -27,7 +27,7 @@ export function getFoodImg(){
 
 function initFoodImg(){
   let player_name = getPlayerName();
-  food_img.src = 'img/food/' + player_name + '.png';
+  food_img.src = 'img/Food/' + player_name + '.png';
 }
 
 

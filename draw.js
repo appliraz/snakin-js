@@ -72,7 +72,7 @@ function drawFood(){
     */
     let food = getFood();
     let food_img = getFoodImg();
-    food_img.onload(ctx.drawImage(food_img, food.x, food.y, food_radius*2, food_radius*2));
+    ctx.drawImage(food_img, food.x, food.y, food_radius*2, food_radius*2);
 }
 
 export function clearBoard(){

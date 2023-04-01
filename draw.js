@@ -8,7 +8,7 @@ export const board_left_bound = board_bound.x;
 export const board_top_bound = board_bound.y;
 export const board_width = canvas.width;
 export const board_height = canvas.height;
-export const box = 30;
+export const box = board_width/20;
 const snake_body_color = 'rgb(31, 100, 32)'
 const board_color = 'rgba(206,255,201, 0.6)'
 

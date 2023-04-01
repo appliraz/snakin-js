@@ -17,6 +17,9 @@ export function unlistenForDirection(){
   document.removeEventListener('touchend', handleTouchEnd, false);
 }
 
+/**
+ * @param {event} e
+ */
 export function updateDirection(e){
   if(snakedirection=="END"){
     return;
@@ -24,6 +27,7 @@ export function updateDirection(e){
   let dir = e.keyCode
   if(!isDirection(dir))
     return;
+  e.preventDefault(); //prevent page scroll
   prev_direction = snakedirection;
   let new_dir = direction[dir];
   snakedirection = new_dir;

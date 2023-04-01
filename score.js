@@ -22,4 +22,5 @@ export function getScore(){
 
 export function resetScore(){
     score = 0;
+    updateScoreInHtml();
 }

@@ -8,63 +8,67 @@
         <link rel="stylesheet" href="fonts/PressStart2P-Regular.ttf">
     </head>
     <body>
-        <div id="upperbox">
-            <h1 id="title">Snakin</h1>
-            <label id="score">0</label>
-        </div>
-        <br/>
-        <canvas id="canvas" height="600" width="600"></canvas>
-        <div id="menu" class = "menu_visible">
-            <div id="menu_content">
-                <div id="welcome-msg">   
-                    <p>
-                        Welcome to Snakin
-                    </p>
-                </div>
-                <div id="select-player">
-                    <span id="select-player-title">Select Player:</span>    
-                    <ul id="player_selection">
-                        <li>
-                            <img class="player-img" src="img/Liraz/Liraz-stop.png" style="width: 100px; height: 110px;" alt="Liraz"/>
-                        </li>
-                        <li>
-                            <img class="player-img" src="img/Pincu/Pincu-stop.png" style="width: 100px; height: 110px;" alt="Pincu"/>
-                        </li>
-                        <li>
-                            <img class="player-img" src="img/Dolev/Dolev-stop.png" style="width: 100px; height: 110px;" alt="Dolev"/>
-                        </li>
-                        <li>
-                            <img class="player-img" src="img/Amit/Amit-stop.png" style="width: 100px; height: 110px;" alt="Amit"/>
-                        </li>
-                    </ul> 
-                </div>
-                <div id="select-diff">
-                    <span id="select-difficulty-title">Select Difficulty:</span>    
-                    <ul id="difficulty_level">
-                        <li class = "diff-elem">
-                            Easy
-                        </li>
-                        <li class = "diff-elem">
-                            Medium
-                        </li>
-                        <li class = "diff-elem">
-                            Hard
-                        </li>
-                        <li class = "diff-elem">
-                            Extreme
-                        </li>
-                    </ul>
-                </div>
+        <div>
+            <div id="upperbox">
+                <h1 id="title">Snakin</h1>
+                <label id="score">0</label>
             </div>
-            <button id="start-btn" >Start Snakin!</button>
-        </div>
-        <div id="game-over">
-            <span>GAME OVER!</span>
-            <div id="game-over-content">
-                <span>Your score: </span>
-                <p id="final-score">0</p>
+            <div id="game-view">
+                <canvas id="canvas"></canvas>
+                <div id="trackpad">Swipe</div>
             </div>
-            <button id="restart-btn"> Restart</button>
+            <div id="menu" class="container">
+                <div id="menu-body" class="subcontainer">
+                    <div id="welcome-msg">   
+                        <p class="welcome-msg">
+                            Welcome to Snakin
+                        </p>
+                    </div>
+                    <div id="select-player" class="subcontainer">
+                        <span id="select-player-title">Select Player:</span>    
+                        <ul id="player_selection" class="list">
+                            <li>
+                                <img class="player-img" src="img/Liraz/Liraz-stop.png" style="width: 100px; height: 110px;" alt="Liraz"/>
+                            </li>
+                            <li>
+                                <img class="player-img" src="img/Pincu/Pincu-stop.png" style="width: 100px; height: 110px;" alt="Pincu"/>
+                            </li>
+                            <li>
+                                <img class="player-img" src="img/Dolev/Dolev-stop.png" style="width: 100px; height: 110px;" alt="Dolev"/>
+                            </li>
+                            <li>
+                                <img class="player-img" src="img/Amit/Amit-stop.png" style="width: 100px; height: 110px;" alt="Amit"/>
+                            </li>
+                        </ul> 
+                    </div>
+                    <div id="select-diff" class="subcontainer">
+                        <span id="select-difficulty-title">Select Difficulty:</span>    
+                        <ul id="difficulty_level" class="list">
+                            <li class = "diff-elem">
+                                Easy
+                            </li>
+                            <li class = "diff-elem">
+                                Medium
+                            </li>
+                            <li class = "diff-elem">
+                                Hard
+                            </li>
+                            <li class = "diff-elem">
+                                Extreme
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="start-btn">Start<br/>Snakin!</button>
+            </div>
+            <div id="game-over" class="container">
+                <span id="gameoverspan">GAME OVER!</span>
+                <div id="game-over-content">
+                    <span>Your score: </span>
+                    <p id="final-score">0</p>
+                </div>
+                <button id="restart-btn">Restart</button>
+            </div>
         </div>
         <script type="module" src="index.js"></script>
     </body>

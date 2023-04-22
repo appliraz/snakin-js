@@ -1,5 +1,7 @@
 import { initalizeGame, startGameRun } from "./game_loop.js";
 import { listenForDirection } from "./directions.js";
+import { initTrackpad } from "./touch_module.js";
+import { canvas } from "./draw.js";
 
 /** The opening menu of the game, allows the user to:
  * Select a player
@@ -17,6 +19,10 @@ let start_btn_clicked = false;
 //get the imgs from the html file
 let menu_imgs = Array.from(document.getElementsByClassName("player-img"));
 let dancing_imgs_interval;
+const regular_diffelem_color = "white";
+const selected_diffelem_color = "#9ACD32";
+const regular_diffelem_size = getComputedStyle(document.documentElement).getPropertyValue('--li-gamestyle-fsize')
+const selected_diffelem_size = getComputedStyle(document.documentElement).getPropertyValue('--li-selected-gamestyle-fsize')
 
 getMenuFromDocument(); //get the menu html element
 
@@ -87,9 +93,17 @@ function danceMenuImgs(){
     })
 }
 
+function makeGameViewVisible(){
+    let gameview = document.getElementById("game-view");
+    gameview.style.display = "flex";
+    canvas.style.display = 'block';
+}
+
 /**Handler Functions */
 function handlePlayerSelection(e){
     let selected = e.target.alt; //the players name are in the alt field of the img
+    if(typeof selected ==='undefined')
+        return;
     selected = selected.trim(); //avoid spaces
     if(!isAllowedPlayer(selected)){
         showErrorMessage("There was a problem with player selection");
@@ -101,6 +115,8 @@ function handlePlayerSelection(e){
 
 function handleDifficultySelection(e){
     let selected = e.target.innerText; //the difficulties are text elements
+    if(typeof selected ==='undefined')
+        return;
     selected = selected.trim(); //avoid spaces
     if(!isAllowedDifficulty(selected)){
         return;
@@ -122,10 +138,12 @@ function handleStartButton(){
     }
     hideMenu();
     removeEventListeners();
+    initTrackpad();
     clearInterval(dancing_imgs_interval);
     start_btn_clicked = true;
     initalizeGame();
     listenForDirection();
+    makeGameViewVisible();
     startGameRun();
 }
 
@@ -159,11 +177,14 @@ function getDifficultiesFromDocument(){
 
 function showMenu(){
     console.log("showing menu");
-    setMenuVisibilty('visible');
+    //setMenuVisibilty('visible');
+    menu.style.display = "flex";
+
 }
 
 function hideMenu(){
-    setMenuVisibilty('hidden');
+    //setMenuVisibilty('hidden');
+    menu.style.display = "none";
 }
 
 
@@ -245,13 +266,13 @@ function markDifficulty(diff_element){
 }
 
 function markAsRegaulrDifficulty(diff_element){
-    diff_element.style.fontSize = "20px";
+    diff_element.style.fontSize = regular_diffelem_size;
     diff_element.style.color = "white";
     diff_element.style.textShadow = "none";
 }
 
 function markAsSelectedDifficulty(diff_element){
-    diff_element.style.fontSize = "24px";
+    diff_element.style.fontSize = selected_diffelem_size;
     diff_element.style.color = "#9ACD32";
     diff_element.style.textShadow = "2px 2px black";
 }

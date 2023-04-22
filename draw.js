@@ -1,14 +1,18 @@
 import { getPlayerImg, getFoodImg} from "./pictures_module.js";
 import { getSnake, getFood } from "./game_loop.js";
 
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-export const board_bound = canvas.getBoundingClientRect();
-export const board_left_bound = board_bound.x;
-export const board_top_bound = board_bound.y;
-export const board_width = canvas.width;
-export const board_height = canvas.height;
-export const box = board_width/20;
+export let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+canvas.width = getCanvasWidth();
+canvas.height = canvas.width;
+let gameview_container = document.getElementById("game-view");
+gameview_container.style.width = canvas.width;
+export let board_bound = canvas.getBoundingClientRect();
+export let board_left_bound = board_bound.x;
+export let board_top_bound = board_bound.y;
+export let board_width = canvas.width;
+export let board_height = canvas.height;
+export let box = board_width/20;
 const snake_body_color = 'rgb(31, 100, 32)'
 const board_color = 'rgba(206,255,201, 0.6)'
 
@@ -57,19 +61,21 @@ function drawSnakeBody(snake){
 }
 
 function drawBoard(){
+    updateBoardDimensions();
     //ctx.fillStyle = "#E55F68";
     ctx.fillStyle = board_color;
     ctx.fillRect(0, 0, board_width, board_height);
 }
 
 function drawFood(){
-    /*
+    /** draw food as dot 
     ctx.beginPath();
     ctx.fillStyle = '#A124B6';
     ctx.arc(food.x, food.y, food_radius, 0, 2*Math.PI, false);
     ctx.fill();
     ctx.closePath();
     */
+   /**drae foor as image */
     let food = getFood();
     let food_img = getFoodImg();
     ctx.drawImage(food_img, food.x, food.y, food_radius*2, food_radius*2);
@@ -79,4 +85,37 @@ export function clearBoard(){
     ctx.clearRect(0, 0, board_width, board_height);
 }
 
-  
+/**trying to make it responsive */
+function updateBoardDimensions(){
+    canvas = document.getElementById('canvas');
+    board_bound = canvas.getBoundingClientRect();
+    board_left_bound = board_bound.x;
+    board_top_bound = board_bound.y;
+    board_width = canvas.width;
+    board_height = canvas.height;
+    box = board_width/20;
+    player_img_width = box*2;
+    player_img_height = box*1.5;
+    food_radius = box*0.65; 
+    console.log(`box size is ${canvas.width}`);
+}
+
+function getCanvasWidth(){
+    let width = window.innerWidth;
+    if(width>=1000)
+        return width*0.3
+    let diff = (1000-width);
+    diff = diff/1000;
+    return width*(diff+0.3);
+}
+
+function resetCanvasWidth(){
+    canvas.width = getCanvasWidth();
+    canvas.height = canvas.width;
+    gameview_container.style.width = canvas.width;
+}
+
+
+
+
+//window.addEventListener('resize', resetCanvasWidth);

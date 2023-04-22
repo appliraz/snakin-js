@@ -1,4 +1,40 @@
 
+:root{
+    /** COLORS */
+    /*backgrounds */
+    --body-background: rgb(31, 100, 32, 0.75);
+    --trackpad-background: rgba(92, 116, 87, 0.85);
+    --menu-background: rgba(38, 92, 29, 0.85);
+    --title-color: rgba(255, 255, 255, 0.877);
+    --gameover-background: rgba(24, 58, 18, 0.85);
+    --trackpad-opacity: 65%;
+    --playerimg-opacity: 85%;
+    --button-background: #D6D5CB;
+    /*elements */
+    --button-fcolor: #1d380c;
+    --button-hover-color: #63c526;
+    --gameover-fcolor: white;
+
+    /**SIZES */
+    /*dimensions */
+    --container-width: clamp(40rem, 90vw, 70rem);;
+    --container-height: 20vh;
+    --canvas-width: 30vw;
+
+    /*fonts*/
+    --title-fsize: clamp(1rem, 10vw, 3rem);
+    --trackpad-fsize: 82px;
+    --subtitle-fsize: clamp(.8rem, 8vw, 2rem);
+    --li-gamestyle-fsize: clamp(1rem, 3vw, 1.4rem);
+    --li-selected-gamestyle-fsize: clamp(1.2rem, 3.5vw, 1.8rem);
+
+    /**DETAILS */
+    --gamestyle-ffamily: "Press Start 2P", sans-serif;
+    --regular-ffamily: Arial, Helvetica, sans-serif;
+
+}
+
+
 @font-face {
     font-family: "Press Start 2P";
     src: url("fonts/PressStart2P-Regular.ttf") format("truetype");
@@ -6,171 +42,176 @@
     font-style: normal;
   }
 
-/* Media query for smaller screens */
-@media screen and (max-width: 768px) {
-    canvas {
-        width: 400px;
-        height: 400px;
-    }
-
-    h1 {
-        font-size: 36px;
-    }
-}
-
-/* Media query for even smaller screens */
-@media screen and (max-width: 480px) {
-    canvas {
-        width: 300px;
-        height: 300px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
+.coolfont{
+    font-family: var(--gamestyle-ffamily);
 }
   
 
 body{
-    /*
-    background-color: rgb(134, 190, 134);*/
-    background-color: rgb(31, 100, 32, 0.75);
+    background: var(--body-background);
     display: flex;
     justify-content: center;
     align-items: center;
-    left: auto;
-    top: auto;
-    margin-top: 100px;
-    
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
 }
 
+
 #upperbox{
-    width: 600px;
-    height: 60px;
+    order: 1;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50px;
+    color: var(--title-color);
+    width: 100%;
 }
 
 #title{
-    color: rgba(255, 255, 255, 0.877);
-    flex-grow: 1;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 38px;
+    padding-right: 65%;
+    font-size: var(--title-fsize);
 }
 
-#select-player-title, #select-difficulty-title {
-    font-size: 28px;
+#score{
+    font-size: var(--title-fsize);
+    justify-self: end;
 }
 
-#score {
-    color: white;
-    font-size: 32px;
-    font-family: Arial;
-    flex-grow: 1;
-    padding: 10px;
-}
-
-#canvas{
-    margin-top: 30px;
-    margin-left: 80px;
-    margin-right: 80px;
-}
-
-
-#menu {
-    visibility: visible;
-    /*window */
-    width: 720px;
-    /*style */
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 42px;
-    background-color:  rgba(38, 92, 29, 0.85);
-    /*display */
+.container, .subcontainer{
     display: flex;
-    justify-content: center;
-    align-content: center;
     flex-direction: column;
-    /*position */
-    position: absolute;
-    top: 110px;
-    z-index: 999;
-    
+    max-width: var(--container-width);
+    align-items: start;
+    margin: 0;
+    padding: 0.4rem;
+    min-height: var(--container-height);
 }
 
-#menu_content {
-    max-width: 680px;
-    height: 620px;
-    display: flex;
-    justify-items: center;
+.subcontainer{
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
     align-items: center;
-    flex-direction: column;
-    color: white;
-    margin-left: 20px;
+    justify-content: center;
 }
 
-li:hover {
+#menu{
+    order: 2;
+    background: var(--menu-background);
+}
+
+#menu-body{
+    order: 1;
+}
+
+#welcome-msg{
+    font-size: var(--title-fsize);
+    color: var(--title-color);
+    order: 1;
+    align-self: center;
+}
+
+#select-player{
+    order: 2;
+}
+
+#select-player-title, #select-difficulty-title{
+    font-size: var(--subtitle-fsize);
+    color: var(--title-color);
+    align-self: start;
+    margin-left: 1rem;
+    width: 100%;
+}
+
+#select-diff{
+    order: 3;
+}
+
+.list{ 
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    overflow: hidden;
+}
+
+li:hover, button:hover{
     cursor: pointer;
 }
 
 li{
-    display: inline;
-    font-family: "Press Start 2P", sans-serif;
-    font-size: 20px;
-    max-width: 220px;
+    padding: .5rem;
 }
 
-.player-img{
-    opacity: 85%;
+.diff-elem{
+    font-family: var(--gamestyle-ffamily);
+    padding-right: 1rem;
+    font-size: var(--li-gamestyle-fsize);
+    color: var(--title-color);
 }
 
 #start-btn, #restart-btn{
-    width: 200px;
-    font-family: "Press Start 2P", sans-serif;
-    font-size: 22px;
-    color: #1d380c;
+    order: 4;
+    color: var(--button-fcolor);
+    font-family: var(--gamestyle-ffamily);
+    font-size: var(--li-gamestyle-fsize);
+    padding: 0.8rem;
     align-self: center;
-    box-shadow: "2px 2px grey";
-    background-color: white;
-    padding: 10px;
+    margin-bottom: 2rem;
+    background-color: var(--button-background);
 }
 
 #start-btn:hover, #restart-btn:hover{
-    color: #6acd2c;
-    cursor: pointer;
+    color: var(--button-hover-color);
 }
 
-#welcome-msg{
-    display:block;
+#restart-btn{
+    margin-top: 2rem;
 }
 
-#player-selection{
-    display: flex;
-    text-align: center;
-    justify-items: center;
-    flex-direction: row;
+#game-view{
+    order: 2; 
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: -999;
+    margin: 0;
 }
 
-#game-over {
-    visibility: hidden;
-    width: 720px;
-    margin: 50px;
-    /*style */
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 42px;
-    background-color:  rgba(24, 58, 18, 0.85);
-    color: white;
-    position: absolute;
-    top: 40%;
-    left: 45%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+
+#trackpad{
+    background-color: var(--trackpad-background);
+    color: whitesmoke;
+    opacity: var(--trackpad-background);
+    font-size: var(--trackpad-fsize);
+    aspect-ratio: 1;
+    display: none;
+    align-items: center;
+    padding: 0 5%;
+    
+}
+
+#game-over{
+    order: 2;
+    display: none;
+    z-index: 999;
+    background-color: var(--menu-background);
+    align-items: center;
+    font-size: var(--title-fsize);
+    color: var(--title-color);
+    position: relative;
+    top: -30rem;
 }
 
 #game-over-content{
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 4;
 }
+
+#final-score{
+    margin: 2rem;
+}
+

@@ -1,12 +1,10 @@
-import { updateFinalScoreInHtml } from "./score.js";
+import { updateFinalScoreInHtml, resetScore } from "./score.js";
 import { restartSnake } from "./game_loop.js";
-import { initMenu } from "./game_menu.js";
+import { initMenu, restartMenu } from "./game_menu.js";
 import { restartDirections } from "./directions.js";
 import { restartPictures } from "./pictures_module.js";
 import { restartPositions } from "./positions.js";
-import { restartMenu } from "./game_menu.js";
-import { clearBoard } from "./draw.js";
-import { resetScore } from "./score.js";
+import { clearBoard, canvas } from "./draw.js";
 
 let game_over_menu;
 let restart_btn;
@@ -19,11 +17,14 @@ function getGameOverMenuFromDocument(){
 }
 
 export function showGameOverMenu(){
-    setMenuVisibilty('visible');
+    //setMenuVisibilty('visible');
+    console.log("showing game over menu");
+    game_over_menu.style.display = "flex";
 }
 
 export function hideGameOverMenu(){
-    setMenuVisibilty('hidden');
+    //setMenuVisibilty('hidden');
+    game_over_menu.style.display = "none";
 }
 
 function getRestartButtonFromDocument(){
@@ -42,6 +43,7 @@ export function serveGameOverMenu(){
 function handleRestartButtonClicked(){
     //hide game over menu;
     hideGameOverMenu();
+    hideTrackpad();
     restart_btn.removeEventListener('click', handleRestartButtonClicked)
     //restart game parameters;
     restartSnake();
@@ -50,6 +52,7 @@ function handleRestartButtonClicked(){
     restartPositions();
     restartMenu();
     clearBoard();
+    canvas.style.display = "none";
     resetScore();
     //re-init menu
     initMenu();
@@ -60,4 +63,9 @@ function setMenuVisibilty(visibility_var){
         game_over_menu.style.visibility = visibility_var;
     else
         throw new Error("Menu is null, could not set visibility");
+}
+
+function hideTrackpad(){
+    let trackpad = document.getElementById('trackpad');
+    trackpad.style.display = 'none';
 }

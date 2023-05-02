@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="fonts/PressStart2P-Regular.ttf">
     </head>
     <body>
-        <div>
+        <div class="wrapper">
             <div id="upperbox">
                 <h1 id="title">Snakin</h1>
                 <label id="score">0</label>
@@ -17,7 +17,7 @@
                 <canvas id="canvas"></canvas>
                 <div id="trackpad">Swipe</div>
             </div>
-            <div id="menu" class="container">
+            <div id="menu">
                 <div id="menu-body" class="subcontainer">
                     <div id="welcome-msg">   
                         <p class="welcome-msg">
@@ -28,16 +28,16 @@
                         <span id="select-player-title">Select Player:</span>    
                         <ul id="player_selection" class="list">
                             <li>
-                                <img class="player-img" src="img/Liraz/Liraz-stop.png" style="width: 100px; height: 110px;" alt="Liraz"/>
+                                <img class="player-img" src="img/Liraz/Liraz-stop.png" alt="Liraz"/>
                             </li>
                             <li>
-                                <img class="player-img" src="img/Pincu/Pincu-stop.png" style="width: 100px; height: 110px;" alt="Pincu"/>
+                                <img class="player-img" src="img/Pincu/Pincu-stop.png" alt="Pincu"/>
                             </li>
                             <li>
-                                <img class="player-img" src="img/Dolev/Dolev-stop.png" style="width: 100px; height: 110px;" alt="Dolev"/>
+                                <img class="player-img" src="img/Dolev/Dolev-stop.png" alt="Dolev"/>
                             </li>
                             <li>
-                                <img class="player-img" src="img/Amit/Amit-stop.png" style="width: 100px; height: 110px;" alt="Amit"/>
+                                <img class="player-img" src="img/Amit/Amit-stop.png" alt="Amit"/>
                             </li>
                         </ul> 
                     </div>
@@ -61,7 +61,7 @@
                 </div>
                 <button id="start-btn">Start<br/>Snakin!</button>
             </div>
-            <div id="game-over" class="container">
+            <div id="game-over">
                 <span id="gameoverspan">GAME OVER!</span>
                 <div id="game-over-content">
                     <span>Your score: </span>

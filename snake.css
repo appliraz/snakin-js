@@ -23,6 +23,7 @@
 
     /*fonts*/
     --title-fsize: clamp(1rem, 10vw, 3rem);
+    --wmessage-fsize: clamp(0.2rem, 2.2rem, 3rem);
     --trackpad-fsize: 82px;
     --subtitle-fsize: clamp(.8rem, 8vw, 2rem);
     --li-gamestyle-fsize: clamp(1rem, 3vw, 1.4rem);
@@ -35,6 +36,7 @@
 }
 
 
+
 @font-face {
     font-family: "Press Start 2P";
     src: url("fonts/PressStart2P-Regular.ttf") format("truetype");
@@ -45,95 +47,115 @@
 .coolfont{
     font-family: var(--gamestyle-ffamily);
 }
+
+html{
+    margin: 0;
+}
   
 
 body{
+    margin: 0;
     background: var(--body-background);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100%;
+    height: 100svh;
     overflow: hidden;
+}
+
+.wrapper{
+    max-height: 90vh;
+    max-height: 90svh;
+    max-width: 80vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
 }
 
 
 #upperbox{
     order: 1;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: end;
+    text-align: left;
+    padding: 0 1rem;
     color: var(--title-color);
-    width: 100%;
+    width: 90%;
 }
 
-#title{
-    padding-right: 65%;
+#title, #score{
     font-size: var(--title-fsize);
+   /* margin-right: auto;*/
+    padding: 0;
+    margin-bottom: 0;
 }
 
-#score{
-    font-size: var(--title-fsize);
-    justify-self: end;
-}
 
-.container, .subcontainer{
+.subcontainer{
     display: flex;
     flex-direction: column;
     max-width: var(--container-width);
-    align-items: start;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     padding: 0.4rem;
     min-height: var(--container-height);
 }
 
-.subcontainer{
-    margin: 0;
-    width: 100%;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-}
-
 #menu{
     order: 2;
     background: var(--menu-background);
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+
 }
 
 #menu-body{
     order: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 #welcome-msg{
-    font-size: var(--title-fsize);
+    font-size: var(--wmessage-fsize);
     color: var(--title-color);
     order: 1;
     align-self: center;
+    text-align: center;
 }
+
 
 #select-player{
     order: 2;
+    align-self: start;
+    width: 100%;
 }
 
+
 #select-player-title, #select-difficulty-title{
+    order: 1;
     font-size: var(--subtitle-fsize);
     color: var(--title-color);
     align-self: start;
-    margin-left: 1rem;
-    width: 100%;
+
 }
 
 #select-diff{
     order: 3;
 }
 
-.list{ 
+.list{
+    order: 2;
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    min-width: 100%;
-    overflow: hidden;
 }
 
 li:hover, button:hover{
@@ -158,7 +180,7 @@ li{
     font-size: var(--li-gamestyle-fsize);
     padding: 0.8rem;
     align-self: center;
-    margin-bottom: 2rem;
+    margin: auto;
     background-color: var(--button-background);
 }
 
@@ -176,8 +198,7 @@ li{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: -999;
-    margin: 0;
+    margin:auto 0;
 }
 
 
@@ -186,7 +207,7 @@ li{
     color: whitesmoke;
     opacity: var(--trackpad-background);
     font-size: var(--trackpad-fsize);
-    aspect-ratio: 1;
+    aspect-ratio: 1.2;
     display: none;
     align-items: center;
     padding: 0 5%;
@@ -196,13 +217,13 @@ li{
 #game-over{
     order: 2;
     display: none;
-    z-index: 999;
     background-color: var(--menu-background);
     align-items: center;
     font-size: var(--title-fsize);
     color: var(--title-color);
-    position: relative;
-    top: -30rem;
+    flex-direction: column;
+    position: absolute;
+    padding: 2rem;
 }
 
 #game-over-content{
@@ -215,3 +236,16 @@ li{
     margin: 2rem;
 }
 
+.player-img{
+    height: clamp(1rem, 6.5rem, 9rem);
+    width: clamp(0.2rem, 5.5rem, 8rem);
+    padding: 0;
+    opacity: 85%;
+}
+
+@media screen and (max-width: 450px){
+    .list{
+        display: grid;
+        grid-template-columns: repeat(2, 0.25fr);
+    }
+}

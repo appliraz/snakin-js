@@ -23,8 +23,9 @@
 
     /*fonts*/
     --title-fsize: clamp(1rem, 10vw, 3rem);
+    --smaller-fsize: clamp(0.2rem, 1.8rem, 3rem);
     --wmessage-fsize: clamp(0.2rem, 2.2rem, 3rem);
-    --trackpad-fsize: 82px;
+    --trackpad-fsize: clamp(5rem, 12vw, 10rem);
     --subtitle-fsize: clamp(.8rem, 8vw, 2rem);
     --li-gamestyle-fsize: clamp(1rem, 3vw, 1.4rem);
     --li-selected-gamestyle-fsize: clamp(1.2rem, 3.5vw, 1.8rem);
@@ -70,7 +71,7 @@ body{
     max-height: 90svh;
     max-width: 80vw;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
@@ -94,7 +95,6 @@ body{
     margin-bottom: 0;
 }
 
-
 .subcontainer{
     display: flex;
     flex-direction: column;
@@ -112,21 +112,24 @@ body{
     max-height: 90%;
     display: flex;
     flex-direction: column;
-
+    margin: 0;
 }
 
 #menu-body{
     order: 1;
     display: flex;
     flex-direction: column;
+    padding: 0;
 }
 
 #welcome-msg{
     font-size: var(--wmessage-fsize);
     color: var(--title-color);
     order: 1;
-    align-self: center;
-    text-align: center;
+    padding: 0.1rem 0;
+    display: flex;
+    align-items: start;
+    margin-bottom: 2rem;
 }
 
 
@@ -244,8 +247,65 @@ li{
 }
 
 @media screen and (max-width: 450px){
+    /*
     .list{
         display: grid;
         grid-template-columns: repeat(2, 0.25fr);
+    }*/
+    body{
+        justify-content: start;
+    }
+    .wrapper{
+        min-width: 100vw;
+    }
+    #menu{
+        width: 100%;
+    }
+    #menu-body{
+        justify-content: space-between;
+        gap: 5rem;
+        margin-top: 6rem;
+    }
+    #start-btn{
+        position: absolute;
+        top: 88vh;
+        size: var(--smaller-fsize);
+    }
+    #welcome-msg{
+        display: none;
+    }
+    #title, #score{
+        font-size: var(--smaller-fsize);
+    }
+}
+
+@media screen and (max-height: 700px){
+    /*
+    body{
+        width: 100vw;
+        width: 100svw;
+    }*/
+    .wrapper{
+        min-width: 100vw;
+    }/*
+    #menu, .wrapper{
+        width: 100vw;
+    }*/
+    #menu{
+        width: 100%;
+    }
+    #title, #score{
+        font-size: var(--smaller-fsize);
+    }
+    #menu-body{
+        margin-top: 6rem;
+    }
+    #gameview{
+        justify-content: start;
+    }
+
+    #trackpad{
+        margin-bottom: 2rem;
+        padding: 0;
     }
 }
